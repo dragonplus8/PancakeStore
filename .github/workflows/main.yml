@@ -19,11 +19,14 @@ jobs:
         run: |
           rm -f PancakeStore.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved
 
-      - name: Compile
-        run: make
+      - name: Make script executable
+        run: chmod +x ipabuild.sh
+
+      - name: Build IPA
+        run: ./ipabuild.sh
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: MuffinStoreJailed
-          path: MuffinStoreJailed.ipa
+          name: PancakeStore
+          path: PancakeStore.ipa
