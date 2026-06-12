@@ -1,7 +1,7 @@
 BASEDIR = $(shell pwd)
 BUILD_DIR = $(BASEDIR)/build
 INSTALL_DIR = $(BUILD_DIR)/install
-PROJECT = $(BASEDIR)/MuffinStoreJailed.xcodeproj
+PROJECT = $(BASEDIR)/PancakeStore.xcodeproj
 SCHEME = MuffinStoreJailed
 CONFIGURATION = Release
 SDK = iphoneos
