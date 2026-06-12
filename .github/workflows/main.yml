@@ -1,5 +1,4 @@
 name: Build IPA
-
 on:
   push:
     branches: [ "main" ]
@@ -7,14 +6,24 @@ on:
 
 jobs:
   build:
-    runs-on: macos-latest
+    runs-on: macos-15
     steps:
-     - uses: actions/checkout@v3
-     - name: Compile
-       run: make
-     
-     - name: Upload artifact
-       uses: actions/upload-artifact@v4
-       with:
-        name: MuffinStoreJailed
-        path: MuffinStoreJailed.ipa
+      - uses: actions/checkout@v3
+
+      - name: Select Xcode
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: '16.4'
+
+      - name: Reset SPM package cache
+        run: |
+          rm -f PancakeStore.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved
+
+      - name: Compile
+        run: make
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: MuffinStoreJailed
+          path: MuffinStoreJailed.ipa
