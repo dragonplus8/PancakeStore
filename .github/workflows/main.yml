@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    runs-on: latest-stable
+    runs-on: macos-latest
     steps:
      - uses: actions/checkout@v3
      - name: Compile
